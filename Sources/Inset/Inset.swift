@@ -18,16 +18,6 @@ public struct Inset<let N: Int, Scalar> {
         self.upper = upper
     }
 
-    /// Use the same amount at both ends of every axis.
-    public init(all amount: Scalar) {
-        self.init(lower: Vector(repeating: amount), upper: Vector(repeating: amount))
-    }
-
-    /// Use independently chosen amounts per axis, equally at both ends.
-    public init(symmetric amounts: Vector<N, Scalar>) {
-        self.init(lower: amounts, upper: amounts)
-    }
-
     public subscript(axis: Int) -> (lower: Scalar, upper: Scalar) {
         (lower[axis], upper[axis])
     }
@@ -64,3 +54,15 @@ extension Inset: AdditiveArithmetic where Scalar: AdditiveArithmetic {
 extension Inset: Encodable where Scalar: Encodable {}
 extension Inset: Decodable where Scalar: Decodable {}
 #endif
+
+extension Inset {
+    /// Use the same amount at both ends of every axis.
+    public init(all amount: Scalar) {
+        self.init(lower: Vector(repeating: amount), upper: Vector(repeating: amount))
+    }
+
+    /// Use independently chosen amounts per axis, equally at both ends.
+    public init(symmetric amounts: Vector<N, Scalar>) {
+        self.init(lower: amounts, upper: amounts)
+    }
+}
