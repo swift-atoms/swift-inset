@@ -31,10 +31,6 @@ extension Inset where N == 3 {
     }
 }
 
-/// A named two-dimensional view: the first axis increases from leading to
-/// trailing, and the second from bottom to top. These labels do not resolve a
-/// runtime writing direction or a screen coordinate system. Choose the axis
-/// interpretation when applying the inset to a domain.
 extension Inset where N == 2 {
     public init(top: Scalar, leading: Scalar, bottom: Scalar, trailing: Scalar) {
         self.init(x: (lower: leading, upper: trailing), y: (lower: bottom, upper: top))
