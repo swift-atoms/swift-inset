@@ -30,3 +30,42 @@ extension Inset where N == 3 {
         )
     }
 }
+
+/// A named two-dimensional view: the first axis increases from leading to
+/// trailing, and the second from bottom to top. These labels do not resolve a
+/// runtime writing direction or a screen coordinate system. Choose the axis
+/// interpretation when applying the inset to a domain.
+extension Inset where N == 2 {
+    public init(top: Scalar, leading: Scalar, bottom: Scalar, trailing: Scalar) {
+        self.init(x: (lower: leading, upper: trailing), y: (lower: bottom, upper: top))
+    }
+
+    public init(horizontal: Scalar, vertical: Scalar) {
+        self.init(symmetric: Vector(x: horizontal, y: vertical))
+    }
+
+    public var top: Scalar {
+        get { upper[1] }
+        set { upper[1] = newValue }
+    }
+
+    public var leading: Scalar {
+        get { lower[0] }
+        set { lower[0] = newValue }
+    }
+
+    public var bottom: Scalar {
+        get { lower[1] }
+        set { lower[1] = newValue }
+    }
+
+    public var trailing: Scalar {
+        get { upper[0] }
+        set { upper[0] = newValue }
+    }
+}
+
+extension Inset where N == 2, Scalar: AdditiveArithmetic {
+    public var horizontal: Scalar { total[0] }
+    public var vertical: Scalar { total[1] }
+}

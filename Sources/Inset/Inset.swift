@@ -66,3 +66,9 @@ extension Inset {
         self.init(lower: amounts, upper: amounts)
     }
 }
+
+extension Inset where Scalar: SignedNumeric {
+    public static prefix func - (value: Self) -> Self {
+        value.map { -$0 }
+    }
+}
