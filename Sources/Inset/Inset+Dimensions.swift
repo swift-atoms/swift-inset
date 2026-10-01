@@ -1,4 +1,4 @@
-public import Vector
+import Vector
 
 extension Inset where N == 1 {
     public init(
