@@ -15,7 +15,9 @@ public struct Inset<let N: Int, Scalar> {
     public subscript(axis: Int) -> (lower: Scalar, upper: Scalar) {
         (lower[axis], upper[axis])
     }
+}
 
+extension Inset {
     public var reversed: Self { Self(lower: upper, upper: lower) }
 
     public func map<Result>(_ transform: (Scalar) throws -> Result) rethrows -> Inset<N, Result> {
