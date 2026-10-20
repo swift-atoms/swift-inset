@@ -25,7 +25,10 @@ import Testing
     @Test func `names accept nonnumeric amounts and mapping keeps canonical order`() {
         let value = Inset(top: "top", leading: "leading", bottom: "bottom", trailing: "trailing")
         var visited: [String] = []
-        let mapped = value.map { item in visited.append(item); return item.count }
+        let mapped = value.map { item in
+            visited.append(item)
+            return item.count
+        }
         #expect(visited == ["leading", "bottom", "trailing", "top"])
         #expect(mapped.top == 3 && mapped.bottom == 6)
     }

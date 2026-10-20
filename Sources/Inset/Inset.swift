@@ -44,8 +44,8 @@ extension Inset: AdditiveArithmetic where Scalar: AdditiveArithmetic {
 }
 
 #if !hasFeature(Embedded)
-extension Inset: Encodable where Scalar: Encodable {}
-extension Inset: Decodable where Scalar: Decodable {}
+    extension Inset: Encodable where Scalar: Encodable {}
+    extension Inset: Decodable where Scalar: Decodable {}
 #endif
 
 extension Inset {

@@ -9,9 +9,11 @@ struct `Inset coding` {
         let inset = Inset(x: (-1, 3), y: (2, -4))
         let data = try JSONEncoder().encode(inset)
         #expect(try JSONDecoder().decode(Inset<2, Int>.self, from: data) == inset)
-        #expect(try JSONDecoder().decode([String: [Int]].self, from: data) == [
-            "lower": [-1, 2], "upper": [3, -4],
-        ])
+        #expect(
+            try JSONDecoder().decode([String: [Int]].self, from: data) == [
+                "lower": [-1, 2], "upper": [3, -4],
+            ]
+        )
     }
 
     @Test(arguments: [
@@ -33,9 +35,11 @@ struct `Inset coding` {
         let data = Data(#"{"lower":[],"upper":[]}"#.utf8)
         #expect(try JSONDecoder().decode(Inset<0, Int>.self, from: data) == .zero)
         let encoded = try JSONEncoder().encode(Inset<0, Int>.zero)
-        #expect(try JSONDecoder().decode([String: [Int]].self, from: encoded) == [
-            "lower": [], "upper": [],
-        ])
+        #expect(
+            try JSONDecoder().decode([String: [Int]].self, from: encoded) == [
+                "lower": [], "upper": [],
+            ]
+        )
     }
 
     @Test

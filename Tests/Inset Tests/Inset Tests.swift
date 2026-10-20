@@ -45,7 +45,10 @@ struct `Inset values and call sites` {
         #expect(inset == .zero)
         #expect(inset.total == Vector<0, Int>.zero)
         var calls = 0
-        let mapped = inset.map { value in calls += 1; return String(value) }
+        let mapped = inset.map { value in
+            calls += 1
+            return String(value)
+        }
         #expect(calls == 0)
         #expect(mapped == Inset<0, String>(all: "unused"))
     }
