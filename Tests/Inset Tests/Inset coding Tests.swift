@@ -25,7 +25,7 @@ struct `Inset coding` {
         #"{"lower":[1,2],"upper":[3,"four"]}"#,
     ])
     func `Decoding delegates exact dimensionality to each vector`(_ json: String) {
-        #expect(throws: (any Error).self) {
+        #expect(throws: (any Swift.Error).self) {
             try JSONDecoder().decode(Inset<2, Int>.self, from: Data(json.utf8))
         }
     }

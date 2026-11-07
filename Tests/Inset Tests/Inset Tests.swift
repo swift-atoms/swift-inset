@@ -91,7 +91,7 @@ struct `Inset values and call sites` {
 
     @Test
     func `Mapping stops at the first failure`() {
-        enum Failure: Error { case rejected }
+        enum Failure: Swift.Error { case rejected }
         var visited: [Int] = []
         #expect(throws: Failure.rejected) {
             try Inset(x: (1, 3), y: (2, 4)).map { value in
